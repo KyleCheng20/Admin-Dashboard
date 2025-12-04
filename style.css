@@ -49,6 +49,8 @@ header{
     grid-template-rows: 1fr 1fr;
     grid-area: header;
     padding: 0.5rem 2rem;
+    box-shadow: 0 3px 8px rgb(0, 0, 0, 0.15);
+    z-index: 2;
 }
 
 header > .header-top{
@@ -107,6 +109,16 @@ header > .header-bottom > .left{
     gap: 1rem;
 }
 
+header > .header-bottom > .left a{
+    text-decoration: none;
+    color: var(--text-gray);
+    transition: 0.2s ease;
+}
+
+header > .header-bottom > .left a:hover{
+    color: var(--background-light-blue);
+}
+
 header > .header-bottom > .right{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -157,10 +169,27 @@ aside h1{
 
 aside a{
     color: white;
+    position: relative;
     text-decoration: none;
     font-size: 1.25rem;
     font-weight: bold;
     transition: transform 0.2s ease;
+}
+
+aside a::after{
+    content: '';
+    position: absolute;
+    background-color: white;
+    width: 0;
+    height: 2px;
+    left: 50%;
+    bottom: -3px;
+    transform: translateX(-50%);
+    transition: width 0.2s ease;
+}
+
+aside a:hover::after{
+    width: 100%;
 }
 
 .dashboard-title-container{
@@ -235,6 +264,13 @@ main .projects-container{
 .announcements-container > .announcement p,
 .trending-user-data > .trending-user-project{
     color: var(--text-gray);
+    padding-top: 0.35rem;
+}
+
+.project,
+.announcements-container,
+.trending-container{
+    box-shadow: 0 3px 8px rgb(0, 0, 0, 0.15);
 }
 
 .projects-container > .project > .icon-container{
@@ -275,6 +311,10 @@ main .projects-container{
 
 main section.announcements{
     grid-area: announcements;
+}
+
+.announcements-container > .announcement p{
+    font-size: 0.9rem;
 }
 
 main section.trending{
